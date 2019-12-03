@@ -2,7 +2,7 @@
   The imperative for this one was to *not* use a grid structure (as I
   would have done naturally in C). Instead we use paths and intersect them.
   An important optimisation is to only intersect lists of points visited
-  at the same Manhatten distance. Otherwise the intersection complexity is
+  at the same Manhattan distance. Otherwise the intersection complexity is
   O(n*m) in terms of points visited by each path. This approach paid off in
   the second part of the puzzle, which became quite straightforward.
 -}
@@ -23,7 +23,7 @@ main = do
   putStr "\n"
 
 solve0 :: String -> Int
-solve0 =  manhatten . head . points
+solve0 =  manhattan . head . points
 
 solve1 :: String -> Int
 solve1 = minimum . pathLengths
@@ -74,7 +74,7 @@ moves (x, y) move
 
 ---- Intersect the paths to find the nearest intersection point
 
--- Find the common points in the sublists (at each Manhatten distance)
+-- Find the common points in the sublists (at each Manhattan distance)
 getCommonPoints :: [[Point]] -> [Point]
 getCommonPoints = map (head) . filter (/= []) . commonPoints . map (bin)
 
@@ -83,25 +83,25 @@ commonPoints lists
   | length lists == 2 = zipWith (intersect) (lists!!0) (lists!!1)
   | otherwise = undefined
 
--- Split the list into sublists of the same Manhatten distance
+-- Split the list into sublists of the same Manhattan distance
 -- Increasing by 1 each time
 bin :: [Point] -> [[Point]]
-bin = bin' 1 . sortManhatten
+bin = bin' 1 . sortManhattan
 
 -- The input list must be sorted
 bin' :: Int -> [Point] -> [[Point]]
 bin' _ [] = []
 bin' n x  = takeWhile distN x : (bin' (n + 1) $ dropWhile distN x)
   where
-    distN z = n == manhatten z
+    distN z = n == manhattan z
 
 ---- Utilities
 
-manhatten :: Point -> Int
-manhatten (a, b) = (abs a) + (abs b)
+manhattan :: Point -> Int
+manhattan (a, b) = (abs a) + (abs b)
 
-sortManhatten :: [Point] -> [Point]
-sortManhatten = sortBy (comparing manhatten)
+sortManhattan :: [Point] -> [Point]
+sortManhattan = sortBy (comparing manhattan)
 
 -- Distance to get to intersection point p (including the point itself)
 lenPath :: Point -> [Point] -> Int
