@@ -76,7 +76,7 @@ moves (x, y) move
 
 -- Find the common points in the sublists (at each Manhattan distance)
 getCommonPoints :: [[Point]] -> [Point]
-getCommonPoints = map (head) . filter (/= []) . commonPoints . map (bin)
+getCommonPoints = concat . filter (/= []) . commonPoints . map (bin)
 
 commonPoints :: [[[Point]]] -> [[Point]]
 commonPoints lists
