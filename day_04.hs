@@ -24,9 +24,7 @@ hasDouble xs = or $ zipWith (==) xs (tail xs)
 
 -- The double digits are not part of a larger group
 noGroups :: [Char] -> Bool
-noGroups xs = any (==2) lengths || all (<3) lengths
-  where
-    lengths = map length $ group xs
+noGroups xs = any (==2) . map length $ group xs
 
 lo :: Int
 lo = 171309
