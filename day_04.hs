@@ -12,7 +12,7 @@ solve0 :: Int
 solve0 =  length . filter hasDouble . filter isMonotonic $ map show [lo..hi]
 
 solve1 :: Int
-solve1 =  length . filter noGroups . filter hasDouble . filter isMonotonic $ map show [lo..hi]
+solve1 =  length . filter noGroups . filter isMonotonic $ map show [lo..hi]
 
 -- Digits are non-decreasing
 isMonotonic :: [Char] -> Bool
@@ -20,7 +20,7 @@ isMonotonic xs = and $ zipWith (<=) xs (tail xs)
 
 -- There are double digits
 hasDouble :: [Char] -> Bool
-hasDouble xs = or $ zipWith (==) xs (tail xs)
+hasDouble xs = any (>=2) . map length $ group xs
 
 -- The double digits are not part of a larger group
 noGroups :: [Char] -> Bool
@@ -31,4 +31,3 @@ lo = 171309
 
 hi :: Int
 hi = 643603
-
