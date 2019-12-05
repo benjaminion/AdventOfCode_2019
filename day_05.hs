@@ -7,7 +7,6 @@ import Debug.Trace
 
 main :: IO ()
 main = do
-  args <- getArgs
   input <- readFile "day_05_input.dat"
   putStr . show . solve 1 $ toVector input
   putStr "\n"
