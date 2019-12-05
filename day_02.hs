@@ -4,11 +4,9 @@ import qualified Data.Vector as V
 import Data.Vector ((//))
 import Data.Vector ((!))
 
--- Specify the file name on the command line
 main :: IO ()
 main = do
-  args <- getArgs
-  input <- readFile (head args)
+  input <- readFile "day_02_input.dat"
   putStr . show . solve0 . toVector $ input
   putStr "\n"
   putStr . show . solve1 . toVector $ input

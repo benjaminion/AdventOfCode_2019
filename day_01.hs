@@ -1,10 +1,8 @@
 import System.Environment
 
--- Specify the file name on the command line
 main :: IO ()
 main = do
-  args <- getArgs
-  input <- readFile (head args)
+  input <- readFile "day_01_input.dat"
   putStr . show . solve0 . toInts $ input
   putStr "\n"
   putStr . show . solve1 . toInts $ input
