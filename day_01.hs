@@ -1,5 +1,3 @@
-import System.Environment
-
 main :: IO ()
 main = do
   input <- readFile "day_01_input.dat"

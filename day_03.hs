@@ -7,7 +7,6 @@
   the second part of the puzzle, which became quite straightforward.
 -}
 
-import System.Environment
 import Data.List
 import Data.List.Split
 import Data.Ord (comparing)

@@ -1,4 +1,3 @@
-import System.Environment
 import Data.List.Split
 import qualified Data.Vector as V
 import Data.Vector ((//))
