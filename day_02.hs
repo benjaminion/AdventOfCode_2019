@@ -6,10 +6,8 @@ import Data.Vector ((!))
 main :: IO ()
 main = do
   input <- readFile "day_02_input.dat"
-  putStr . show . solve0 . toVector $ input
-  putStr "\n"
-  putStr . show . solve1 . toVector $ input
-  putStr "\n"
+  putStrLn . show . solve0 . toVector $ input
+  putStrLn . show . solve1 . toVector $ input
 
 solve0 :: V.Vector Int -> Int
 solve0 = V.head . runCode 0 . modifyInput (12, 02)

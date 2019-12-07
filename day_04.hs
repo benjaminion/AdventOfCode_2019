@@ -2,10 +2,8 @@ import Data.List
 
 main :: IO ()
 main = do
-  putStr . show $ solve0
-  putStr "\n"
-  putStr . show $ solve1
-  putStr "\n"
+  putStrLn . show $ solve0
+  putStrLn . show $ solve1
 
 solve0 :: Int
 solve0 =  length . filter hasDouble . filter isMonotonic $ map show [lo..hi]

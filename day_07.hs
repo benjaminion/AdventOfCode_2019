@@ -14,10 +14,8 @@ import Debug.Trace
 main :: IO ()
 main = do
   input <- readFile "day_07_input.dat"
-  putStr . show . solve0 . toVector $ input
-  putStr "\n"
-  putStr . show . solve1 . repeat . toVector $ input
-  putStr "\n"
+  putStrLn . show . solve0 . toVector $ input
+  putStrLn . show . solve1 . repeat . toVector $ input
 
 ---- First part
 

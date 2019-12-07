@@ -1,10 +1,8 @@
 main :: IO ()
 main = do
   input <- readFile "day_01_input.dat"
-  putStr . show . solve0 . toInts $ input
-  putStr "\n"
-  putStr . show . solve1 . toInts $ input
-  putStr "\n"
+  putStrLn . show . solve0 . toInts $ input
+  putStrLn . show . solve1 . toInts $ input
 
 toInts :: String -> [Integer]
 toInts = map read . words

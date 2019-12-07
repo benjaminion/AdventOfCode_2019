@@ -4,10 +4,8 @@ import Data.List.Split
 main :: IO ()
 main = do
   input <- readFile "day_06_input.dat"
-  putStr . show . solve0 $ input
-  putStr "\n"
-  putStr . show . solve1 $ input
-  putStr "\n"
+  putStrLn . show . solve0 $ input
+  putStrLn . show . solve1 $ input
 
 solve0 :: String -> Int
 solve0 = sum . map (subtract 1 . length) . orbitLists . dataFromInput

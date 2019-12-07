@@ -7,10 +7,8 @@ import Debug.Trace
 main :: IO ()
 main = do
   input <- readFile "day_05_input.dat"
-  putStr . show . solve 1 $ toVector input
-  putStr "\n"
-  putStr . show . solve 5 $ toVector input
-  putStr "\n"
+  putStrLn . show . solve 1 $ toVector input
+  putStrLn . show . solve 5 $ toVector input
 
 solve :: Int -> V.Vector Int -> [Int]
 solve system v = (\(a, _ , _) -> a) . runCode system $ ([], 0, v)
