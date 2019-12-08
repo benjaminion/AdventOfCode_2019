@@ -36,7 +36,7 @@ solve1 vs = maximum . map (trial1 0 . zipWith id (map makeAmp vs)) . permutation
 
 trial1 :: Int -> [Amp] -> Int
 trial1 input amps
-  | _stop amp == True = input
+  | _stop amp = input
   | otherwise = trial1 (_output updatedAmp) ((tail amps) ++ [updatedAmp])
   where
     amp = head amps
