@@ -40,11 +40,7 @@ runCode comp
   | code == 99 = comp {_stop = True} -- stop
   | otherwise = trace (show comp) error "Error: undefined opcode"
   where
-    o = _output comp
-    p = _pc comp
-    v = _code comp
-    i = _input comp
-    r = _rbo comp
+    (o, p, v, i, r) = (_output comp, _pc comp, _code comp, _input comp, _rbo comp)
     code = mod (v!p) 100
     flags = (\n -> mod (div (v!p) n) 10) <$> [100, 1000, 10000]
     param n
