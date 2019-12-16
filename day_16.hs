@@ -36,13 +36,12 @@ We're going to rely on three things.
 -}
 
 solve1 :: [Char] -> [Char]
-solve1 input = concat. map show . take 8 . reverse . iterateFft 100 . reverse $ digits
+solve1 input = concat. map show . take 8 . reverse . head . drop 100 . iterate fft2 . reverse $ digits
   where
     start = (read . take 7 $ input)::Int
     digits = map read . chunksOf 1 . drop start . concat . replicate 10000 $ input
 
--- Using scanl' on the reversed list is faster than using scanr, but it's still slow
+-- Using scanl' on the reversed list is faster than using scanr, but it's still quite slow
 -- All numbers are +ve so skip the `abs` - this doubles the speed.
-iterateFft :: Int -> [Int] -> [Int]
-iterateFft 0 xs = xs
-iterateFft n xs = iterateFft (n - 1) . map (`mod` 10) . tail . scanl' (+) 0 $ xs
+fft2 :: [Int] -> [Int]
+fft2 = map (`mod` 10) . tail . scanl' (+) 0
